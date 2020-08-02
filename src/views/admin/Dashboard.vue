@@ -34,7 +34,8 @@
                   </router-link>
               </li>
               <li class="nav-item">
-                  <router-link class="nav-link" :to="{ name: '圖庫列表' }" active-class="active">
+                  <router-link class="nav-link" :to="{ name: '圖庫列表' }"
+                   active-class="active">
                     圖庫列表
                   </router-link>
               </li>
