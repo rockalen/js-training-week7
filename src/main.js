@@ -21,6 +21,8 @@ import 'bootstrap'
 import './bus'
 // 讓瀏覽器的全域環境可以使用到 $
 import jQuery from 'jquery'
+// 匯入 money，千分號轉換
+import FormatMoney from './filters/FormatMoney'
 window.$ = window.jQuery = jQuery
 // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 library.add(fas)
@@ -49,11 +51,8 @@ Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('ValidationProvider', ValidationProvider)
 
 // money，千分號轉換
-Vue.filter('money', function (num) {
-  const parts = num.toString().split('.')
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  return '$' + parts.join('.')
-})
+Vue.filter('money', FormatMoney)
+
 new Vue({
   router,
   render: h => h(App)

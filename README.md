@@ -2,7 +2,7 @@
 tags: JavaScript 實戰班
 ---
 
-# 第六週 Vue Router
+# 第七週 Vue Router
 
 - DEMO :[https://rockalen.github.io/js-training-week6/dist/#/](https://rockalen.github.io/js-training-week6/dist/#/)
 
