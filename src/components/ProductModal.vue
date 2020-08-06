@@ -68,12 +68,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="description" class="col-form-label">產品描述</label>
-                                    <textarea v-model="tempProduct.description" class="form-control" id="description" placeholder="請輸入產品描述"></textarea>
+                                    <label for="description" class="col-form-label">產品介紹</label>
+                                    <textarea v-model="tempProduct.content" class="form-control" id="description" placeholder="請輸入產品描述"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="content" class="col-form-label">產品內容介紹</label>
-                                    <textarea v-model="tempProduct.content" class="form-control" id="content" placeholder="請輸入產品內容介紹"></textarea>
+                                    <label for="content" class="col-form-label">產品描述</label>
+                                    <textarea v-model="tempProduct.description" class="form-control" id="content" placeholder="請輸入產品內容介紹"></textarea>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
@@ -117,7 +117,9 @@ export default {
     return {
       tempProduct: {
         imageUrl: [],
-        options: {}
+        options: {
+          onSale: false
+        }
       },
       isLoading: false,
       statusMsg: ''
@@ -158,6 +160,7 @@ export default {
         // window.$('#productModal').modal('show')
         // 透過 axios API 取回遠端產品資料
         this.tempProduct = res.data.data
+        // this.tempProduct.options = res.data.data.options
         // 遠端存取Loading畫面關閉
         this.isLoading = false
       }).catch((error) => {
@@ -193,7 +196,7 @@ export default {
           this.$emit('update')
         } else {
           this.$bus.$emit('message:push',
-            `喔歐~上傳圖片不可超過 2 MB
+            `喔歐~更新資料時發生錯誤!
         ${response.data.message}(${response.status})`,
             'danger')
         }

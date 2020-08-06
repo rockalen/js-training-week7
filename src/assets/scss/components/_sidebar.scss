@@ -1,0 +1,158 @@
+// 可抽出漢堡彈出scss
+@include media-breakpoint-down(md) {     
+    .text-md-down-dark{
+        transition: color 0.5s ;
+        color:#121212 !important;
+    }
+
+    // .bg-md-down-dark{
+    //     transition: color 0.5s ;
+    //     color: #121212 !important;
+    // }
+
+    // 購物車根漢堡按鈕提升
+    .navbar-cart{
+        z-index: 10;
+    }
+    .navbar-btn {
+        z-index: 10;
+        color: #000;
+    }
+    // 漢堡按鈕
+    .toggle-menu {
+        // background-color: rgba(0, 0, 0, 0.2);
+        // position: fixed;
+        // top: 2rem;
+        // left: 2rem;
+        width: 1.8rem;
+        height: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0.1rem 0.3rem;
+        border-radius: 0.3rem;
+      }
+    //  變箭頭後旋轉180度
+      .toggle .toggle-menu{
+        transition: transform 500ms ease 0s;
+        transform: rotateZ(180deg);       
+      }
+
+      .line {
+        width: 100%;
+        height: 2px;
+        border-radius:3px;
+        background-color: #fff;
+        transition: 0.2s ease-out;
+      }
+      .toggle .line1 {
+        // 變叉叉
+        // background-color: #e73c7e;
+        // transform: scale(0.9) rotateZ(-45deg) translate(-6px, 4px);
+        // background-color: #333;
+        // 變箭頭
+        transform-style: preserve-3d;
+        transition: transform 250ms ease 0s, width 500ms ease 0s, background-color 0.5s ease;
+        background-color: #333;
+        width: 13px;
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(45deg) translateX(9px) translateY(-5px) translateZ(0px);
+
+      }
+      .toggle .line2 {
+          // 變叉叉
+        // display: none;
+        // 變箭頭
+        // z-index: 1;
+        display: block;
+        // width: 35px;
+        // height: 2px;
+        margin-right: auto;
+        margin-left: auto;
+        transition: background-color 0.5s ease;
+        background-color: #333;
+        // background-color: #333;
+      }
+      .toggle .line3 {
+        // 變叉叉  
+        // background-color: #e73c7e;
+        // transform: scale(0.9) rotateZ(45deg) translate(-6px, -4px);
+        // 變箭頭
+        transform-style: preserve-3d;
+        transition: transform 250ms ease 0s, width 500ms ease 0s, background-color 0.5s ease;
+        background-color: #333;
+        // background-color: red;
+        width: 13px;
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(-45deg) translateX(9px) translateY(5px) translateZ(0px);
+      }
+    .nav-bar {
+        z-index: 9;
+        padding-top: 72px;
+        padding-right: 15px;
+        padding-left: 15px;
+        position: absolute;
+        background-color: #fff;        
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        transition: 0.5s ease-out;  
+        li{
+            border-bottom: 1px solid #00000062;
+            width: 100%;
+        }        
+        
+    }
+    
+    .nav-bar.collapse.show{
+        left: 0;
+        box-shadow: 1px 0 15px 2px rgba(0, 0, 0, 0.4);
+    }
+    .sub-menu{
+        border-top: 1px solid #00000062;
+        ul li a{
+           color:#0000009A; 
+        }
+    }
+
+    .sub-menu-item{
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    
+    // .sub-menu-item li{
+    //     color:#0000009A;
+    // }
+
+}
+
+// 靜態次選單
+.static-sub-menu{
+    background-color: #F2F2F2;
+    ul{
+        display: flex;
+        
+        li{
+            margin-right: 24px;
+            a{
+                color:#0000009A;
+            }
+            
+        }        
+    }
+}
+// collapse arrow_down icon rotate
+.arrow-active{
+    transform: rotate(180deg);
+}
+
+
+@media(min-width:576px){
+    .sub-menu{
+        display: none;
+    }
+    
+}

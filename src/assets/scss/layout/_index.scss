@@ -1,0 +1,84 @@
+// body {
+//     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+// }
+// 設定logo字形
+.logo{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+}
+
+// index layout page scss
+.index-bg{
+    height: 640px;
+    position: relative;
+}
+
+// .index-bg-cover{
+//     position: absolute;    
+//     background-size: cover;
+//     background-position: center center;
+//     top: 0;
+//     bottom: 0;
+//     background-image: url(./images/index-1.jpg);
+// }
+
+.footer-bg{
+    height: 224px;
+    position:relative
+}
+
+// .footer-bg-cover{
+//     position: absolute;    
+//     background-size: cover;
+//     background-position: center center;
+//     top: 0;
+//     bottom: 0;
+//     background-image: url(./images/footer.jpg);
+// }
+.person-bg{
+    height: 400px;
+    position: relative;
+}
+
+// .person-bg-cover{
+//     position: absolute;    
+//     background-size: cover;
+//     background-position: center center;
+//     top: 0;
+//     bottom: 0;
+//     background-image: url(./dist/images/index-5.jpg);
+// }
+.card-columns {
+    column-count: 1;
+    }
+
+// 設定grid small-gutter
+.row-small-gutter {
+    margin-left: -$grid-gutter-small;
+    margin-right: -$grid-gutter-small;
+}
+
+.row-small-gutter>* {
+    padding-left: $grid-gutter-small;
+    padding-right: $grid-gutter-small;
+}
+@media (min-width: 576px) {
+        .card-columns {
+        column-count: 3;
+        }
+    }
+@media (min-width:576px){
+    .px-md-gutter{
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+    .index-md-bg{
+        min-height: 800px;       
+    }
+    .text-md-dark{
+        color:#333 !important;
+    }
+    .footer-md-bg{
+        min-height: 400px;
+    }
+}

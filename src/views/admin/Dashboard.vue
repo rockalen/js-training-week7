@@ -10,51 +10,52 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <!-- <li class="nav-item"> -->
-                  <!-- <a class="nav-link" href="product.html">產品維護 <span class="sr-only">(current)</span></a> -->
-                  <!-- <router-link class="nav-link" to="/admin">首頁</router-link>
-              </li> -->
-              <li class="nav-item">
-                  <router-link class="nav-link" to="/admin/products"
-                   active-class="active">
-                    產品列表
-                  </router-link>
-              </li>
-              <li class="nav-item">
-                  <router-link class="nav-link" :to="{ name: '訂單列表' }"
-                   active-class="active">
-                    訂單列表
-                  </router-link>
-              </li>
-              <li class="nav-item">
-                  <router-link class="nav-link" :to="{ name: '優惠卷列表' }"
-                   active-class="active">
-                    優惠卷列表
-                  </router-link>
-              </li>
-              <li class="nav-item">
-                  <router-link class="nav-link" :to="{ name: '圖庫列表' }"
-                   active-class="active">
-                    圖庫列表
-                  </router-link>
-              </li>
-               <li class="nav-item">
-                <router-link class="nav-link" to="/admin/customerOrders"
-                 active-class="active">
-                  模擬訂單
+          <ul class="navbar-nav">
+            <!-- <li class="nav-item"> -->
+                <!-- <a class="nav-link" href="product.html">產品維護 <span class="sr-only">(current)</span></a> -->
+                <!-- <router-link class="nav-link" to="/admin">首頁</router-link>
+            </li> -->
+            <li class="nav-item">
+                <router-link class="nav-link" to="/admin/products"
+                  active-class="active">
+                  產品列表
                 </router-link>
-              </li>
-            </ul>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: '訂單列表' }"
+                  active-class="active">
+                  訂單列表
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: '優惠卷列表' }"
+                  active-class="active">
+                  優惠卷列表
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: '圖庫列表' }"
+                  active-class="active">
+                  圖庫列表
+                </router-link>
+            </li>
+              <li class="nav-item">
+              <router-link class="nav-link" to="/admin/customerOrders"
+                active-class="active">
+                模擬訂單
+              </router-link>
+            </li>
+          </ul>
         </div>
         <router-link to="/" class="btn btn-outline-success mr-2">回前台</router-link>
         <button @click="logout()" class="btn btn-success my-2 my-sm-0" type="button">登出</button>
         </div>
-        <router-view :token="token" v-if="this.checkSucess"></router-view>
+        <router-view :token="token" v-if="this.checkSucess" class="container"></router-view>
     </div>
 </template>
 
 <script>
+
 export default {
   name: 'Dashboard',
   data () {

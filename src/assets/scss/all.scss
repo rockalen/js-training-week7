@@ -4,3 +4,8 @@
 @import "~bootstrap/scss/mixins";
 $font-sizes: (48, 36, 32, 24, 20, 16, 14, 12, 10);
 @import "./helpers/font-sizes";
+@import "./helpers/materialIcon";
+@import "./layout/index";
+@import "./layout/products";
+@import "./helpers/logoFont";
+@import "./components/sidebar";

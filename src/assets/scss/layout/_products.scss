@@ -1,0 +1,56 @@
+.card-columns {
+    @include media-breakpoint-down(md) {
+        column-count: 2;
+      }
+    @include media-breakpoint-only(lg) {
+      column-count: 3;
+    }
+    @include media-breakpoint-only(xl) {
+      column-count: 3;
+    }
+}
+
+// product list 卡片元件
+$product-detail-card-img-height:360px;
+.product-card{
+    img{
+        height: $product-detail-card-img-height;
+        object-fit: cover;
+    }
+}
+
+.product-item{   
+    .card-img, .card-img-lg, .card-img-sm{
+        height:161px;
+        object-fit:cover;
+    } 
+}
+// product image 桌機
+@media(min-width:576px){
+    .product-card{
+        img{
+            height: 442px;
+            object-fit: cover;
+        }
+    }
+    .product-item{  
+        img{
+            width: 100%;
+            object-fit:cover;
+        } 
+        .card-img{
+            height:350px;
+            
+        }
+        .card-img-lg{
+            height:480px;
+            // object-fit:cover;
+        }
+        .card-img-sm{
+            height:240px;
+            // object-fit:cover;
+        }
+    }  
+   
+}
+
