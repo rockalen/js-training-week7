@@ -11,7 +11,7 @@ tags: JavaScript 實戰班
 
 #### 前台頁面
 - 首頁 / (尚未完成)
-- 首座理念 /about
+- 手做理念 /about
 - 慢慢手做 /products
     - 單一產品頁面 /product (尚未完成)
 - 購物車 /carts (尚未完成)
