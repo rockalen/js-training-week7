@@ -137,11 +137,11 @@ export default {
     return {
       activeClass: 0,
       classMenu: [
-        { name: '全部', number: 24, link: '#/products' },
-        { name: '手做陶器', number: 10, link: '#/products' },
-        { name: '木做小物', number: 8, link: '#/' },
-        { name: '多元素文創', number: 8, link: '#/' },
-        { name: '其他', number: 5, link: '#/' }
+        { name: '全部', number: 12, link: '#/products' },
+        { name: '手做陶器', number: 5, link: '#/products' },
+        { name: '木做小物', number: 2, link: '#/' },
+        { name: '多元素文創', number: 1, link: '#/' },
+        { name: '其他', number: 1, link: '#/' }
       ]
     }
   },
