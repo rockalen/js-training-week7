@@ -2,7 +2,7 @@
   <section class="bg-dark">
     <nav class="container d-md-flex bg-dark navbar-dark py-md-5 font-size-14">
       <a class="logo nav-link text-white mr-3 pt-4 pt-md-0 px-0 mb-6 mb-md-0 text-md-center" href="#">
-        <img src="@/assets/images/slowly_logo_white.png" alt="" width="60" class="logo mr-2">
+        <img src="@/assets/images/slowly_logo2_white.png" alt="" width="60" class="logo mr-2">
         DoSlowly
       </a>
       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

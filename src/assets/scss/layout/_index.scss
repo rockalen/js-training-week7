@@ -3,8 +3,14 @@
 // }
 // 設定logo字形
 .logo{
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.5rem;
+    // font-family: 'Raleway', sans-serif;
+    // font-family: 'Baloo 2', cursive;
+    font-family: 'Squada One', cursive;
+    color: #3A3E39;
+    font-size: 1.6rem;
+    img {
+        width: 51px;
+    }
 }
 
 // index layout page scss
@@ -48,9 +54,9 @@
 //     bottom: 0;
 //     background-image: url(./dist/images/index-5.jpg);
 // }
-.card-columns {
-    column-count: 1;
-    }
+// .card-columns {
+//     column-count: 1;
+//     }
 
 // 設定grid small-gutter
 .row-small-gutter {
@@ -68,6 +74,15 @@
         }
     }
 @media (min-width:576px){
+    .logo{
+        // font-family: 'Raleway', sans-serif;
+        // font-family: 'Baloo 2', cursive;
+        font-family: 'Squada One', cursive;
+        font-size: 2rem;
+        img {
+            width: 70px;
+        }
+    }
     .px-md-gutter{
         padding-right: 15px !important;
         padding-left: 15px !important;

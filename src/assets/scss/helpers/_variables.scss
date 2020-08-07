@@ -47,6 +47,7 @@ $cyan:    #17a2b8 !default;
 // custom
 $deep-green: #0E8A00 !default;
 $light-grey: #F2F2F2 !default;
+$brown: #6A3906 !default;
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -65,8 +66,8 @@ $colors: map-merge(
     "white":      $white,
     "gray":       $gray-200, //$gray-600,
     "gray-dark":  $gray-800,
-    "green-dark": $deep-green
-    
+    "green-dark": $deep-green,
+    "brown": $brown
   ),
   $colors
 );
@@ -81,7 +82,8 @@ $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
 // custom primary color
 $main:          $deep-green !default;
-$sec-2:          $deep-green !default;
+$sec-2:          $brown !default;
+
 
 $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -268,8 +270,8 @@ $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 
-$component-active-color:      $main !default;//$white !default;
-$component-active-bg:         $white !default;//theme-color("primary") !default;
+$component-active-color:      $white !default;//$main !default;
+$component-active-bg:         theme-color("primary") !default;//$white !default;
 
 $caret-width:                 .3em !default;
 $caret-vertical-align:        $caret-width * .85 !default;

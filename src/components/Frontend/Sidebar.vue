@@ -1,6 +1,6 @@
 <template>
   <div class="mainMenu">
-    <nav class="navbar navbar-expand-lg bg-transparent navbar-light px-15 w-100" >
+    <nav class="navbar navbar-expand-lg bg-transparent navbar-light px-15 w-100 mb-3 mb-md-0" >
       <div class="container">
         <button @click="toggle" class="navbar-btn navbar-toggler p-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <!-- <span class="navbar-toggler-icon"></span> -->
@@ -12,7 +12,7 @@
         </button>
         <router-link class="navbar-brand logo text-dark mr-0"
          to="/">
-         <img src="@/assets/images/slowly2_logo.png" alt="" width="72" class="logo d-none d-md-inline pr-2">
+         <img src="@/assets/images/slowly4_logo.png" alt="" width="52" class="logo pr-md-2">
            DoSlowly
         </router-link>
         <router-link class="navbar-cart nav-link text-dark px-0 order-md-3 material-icons"
@@ -135,7 +135,7 @@ export default {
   name: 'Sidebar',
   data () {
     return {
-      activeClass: -1,
+      activeClass: 0,
       classMenu: [
         { name: '全部', number: 24, link: '#/products' },
         { name: '手做陶器', number: 10, link: '#/products' },

@@ -12,7 +12,7 @@
                     </p>
                   </div>
                 <div class="card-body text-left p-0 pt-1">
-                    <h5 class="card-title mb-1 text-capitalize font-size-md-24">
+                    <h5 class="card-title mb-1 text-capitalize font-size-md-24 font-weight-bold">
                       {{item.title}}
                     </h5>
                     <p class="card-text font-size-16 text-truncate">
@@ -21,9 +21,9 @@
                     <del class="text-black-50 ml-2">NT$1200</del> -->
                     </p>
                     <div class="d-flex align-items-baseline">
-                        <div v-if="item.price >= item.origin_price"> {{ item.origin_price | money }}元</div>
-                        <del class="text-muted" v-if="item.price < item.origin_price"> {{ item.origin_price | money }}元</del>
-                        <div v-if="item.price < item.origin_price" class="ml-2 font-size-sm-18 font-size-md-20 "> {{item.price | money}}元</div>
+                        <div class="font-size-20" v-if="item.price >= item.origin_price"> {{ item.origin_price | money }}元</div>
+                        <del class="text-muted font-size-16" v-if="item.price < item.origin_price"> {{ item.origin_price | money }}元</del>
+                        <div v-if="item.price < item.origin_price" class="ml-2 font-weight-bold font-size-20 "> {{item.price | money}}元</div>
                     </div>
                 </div>
             </div>
