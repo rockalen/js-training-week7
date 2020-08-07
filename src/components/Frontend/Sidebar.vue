@@ -12,7 +12,7 @@
         </button>
         <router-link class="navbar-brand logo text-dark mr-0"
          to="/">
-         <img src="@/assets/images/slowly4_logo.png" alt="" width="52" class="logo pr-md-2">
+         <img src="@/assets/images/slowly4_logo.png" alt="logo" class="logo pr-md-2">
            DoSlowly
         </router-link>
         <router-link class="navbar-cart nav-link text-dark px-0 order-md-3 material-icons"
