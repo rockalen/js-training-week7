@@ -107,13 +107,13 @@
         </div>
       </div>
     </nav>
-    <div class="static-sub-menu container-fluid mb-4 mb-md-7 d-none d-md-block" id="staticSubMenu">
+    <!-- <div class="static-sub-menu container-fluid mb-4 mb-md-7 d-none d-md-block" id="staticSubMenu">
       <ul class="nav sub-menu-item text-capitalize container" id="sub-menu-item">
         <li v-for="(item, index) in classMenu" :key="index" class="nav-item border-0 font-size-16 font-size-md-24 my-3">
             <a v-bind:href="item.link" class="font-weight-bold nav-link p-0"
              :class="activeClass == index ? 'text-main':''" @click="getItem(index)">
           {{ item.name }}<sup>{{item.number}}</sup></a>
-        </li>
+        </li> -->
         <!-- <li class="border-0 font-size-16 font-size-md-24 my-3">
             <a href="#">bowl<sup>10</sup></a>
         </li>
@@ -126,8 +126,8 @@
         <li class="border-0 font-size-16 font-size-md-24 mt-3">
             <a href="#">vase<sup>3</sup></a>
         </li> -->
-      </ul>
-    </div>
+      <!-- </ul> -->
+    <!-- </div> -->
   </div>
 </template>
 <script>
@@ -156,7 +156,7 @@ export default {
       window.$('.arrow-down').toggleClass('arrow-active')
     },
     getItem (index) {
-      this.activeClass = index // 把当前点击元素的index，赋值给activeClass
+      this.activeClass = index // 把当前點擊元素的index，赋值给activeClass
       // console.log(this.activeClass)
     }
   }

@@ -34,6 +34,9 @@ $product-detail-card-img-height:360px;
         }
     }
     .product-item{  
+        .card{
+            cursor: pointer;
+        }
         img{
             width: 100%;
             object-fit:cover;

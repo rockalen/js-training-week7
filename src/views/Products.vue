@@ -1,10 +1,11 @@
 <template>
-    <div class="products container">
+    <div class="products">
+      <ClassMenu/>
         <loading :active.sync="isLoading"></loading>
-        <div id="productList" class="product-item card-columns mb-5">
+        <div id="productList" class="product-item container card-columns mb-5">
             <div v-for="(item, index) in products" :key="index" class="card"
              :class="{'d-md-none':index == 9}"
-             >
+             @click="getproduct(item.id)">
                 <img :src="item.imageUrl[0]" class="card-img">
                   <div v-if="item.options.onSale" class="card-img-overlay p-3">
                     <p class="card-text text-right text-white font-size-14 text-capitalize">
@@ -52,16 +53,19 @@
 
 <script>
 import Pagination from '@/components/Frontend/Pagination.vue'
+import ClassMenu from '@/components/Frontend/ClassMenu'
 export default {
   name: 'Products',
   components: {
-    Pagination
+    Pagination,
+    ClassMenu
   },
   data () {
     return {
       isLoading: false,
       products: [],
       pagination: {}
+      // subMenuDisplay: true
     }
   },
   created () {
@@ -79,6 +83,9 @@ export default {
         this.isLoading = false
       //   console.log(this.products)
       })
+    },
+    getproduct (id) {
+      this.$router.push({ path: `/product/${id}` }) // -> /user/123
     }
   }
 

@@ -144,8 +144,8 @@ export default {
           // this.isLoading = true;
           this.loadingBtn = this.tempProduct.id
           this.isNew = false
-          this.tempProduct = Object.assign({}, item)
-          // this.tempProduct = JSON.parse(JSON.stringify(item));
+          // this.tempProduct = Object.assign({}, item)
+          this.tempProduct = JSON.parse(JSON.stringify(item))
           // 使用 refs 觸發子元件getProduct方法
           this.$refs.productModel.getProduct(this.tempProduct.id)
           // console.log(this.tempProduct.id)
