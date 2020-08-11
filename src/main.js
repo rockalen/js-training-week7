@@ -22,7 +22,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import style
 import 'swiper/css/swiper.css'
 // If you use Swiper 6.0.0 or higher
-// import 'swiper/swiper-bundle.css'
+import 'swiper/swiper-bundle.css'
 // Bus
 import './bus'
 // 讓瀏覽器的全域環境可以使用到 $

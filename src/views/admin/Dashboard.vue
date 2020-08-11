@@ -99,3 +99,10 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  .nav-link.active {
+    color: #ffc107 !important;
+    font-weight: bold;
+    // background-color: #ffffff
+  }
+</style>

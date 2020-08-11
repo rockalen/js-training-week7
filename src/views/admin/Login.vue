@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div class="login container">
          <div class="row h-100 justify-content-center align-items-center">
             <div class="col-md-3 col-10 text-center">
                 <form class="form-signin" @submit.prevent="login">

@@ -24,12 +24,12 @@
                 <div class="d-flex flex-wrap">
                     <!-- quantity button -->
                     <div class="cart-quantity row  no-gutters mr-md-2 mb-3 mb-md-0 order-md-2">
-                        <button class="sub btn col-4 px-0">
-                          <i class="material-icons">remove</i>
+                        <button @click="changeQuantity( tempQuantity - 1)" class="sub btn col-4 px-0" :disabled="tempQuantity === 1">
+                          <i  class="material-icons align-bottom">remove</i>
                         </button>
-                        <input type="number" min="1" max="99" value="1" class="col-4 text-center border-0">
-                        <button class="add btn col-4 px-0">
-                          <i class="material-icons">add</i>
+                        <input type="number" min="1" max="99" :value="this.tempQuantity" class="col-4 text-center border-0 font-size-20">
+                        <button @click="changeQuantity( tempQuantity + 1)" class="add btn col-4 px-0" >
+                          <i  class="material-icons align-bottom">add</i>
                         </button>
                     </div>
                     <!-- price display -->
@@ -40,13 +40,14 @@
                       <br>{{tempProduct.price | money}}
                     </p>
                     <!-- add to cart button & Button trigger modal -->
-                    <button class="add-cart-btn btn btn-main btn-lg flex-md-grow-1 font-weight-bold order-md-3" data-toggle="modal" data-target="#cartModalLong">
+                    <button @click="addToCart" class="add-cart-btn btn btn-main btn-lg flex-md-grow-1 font-weight-bold order-md-3" data-toggle="modal" data-target="#cartModalLong">
                         加入購物車
                     </button>
                 </div>
             </div>
           </div>
         </div>
+        <CartsModal ref="CartsModal" :msgStatus="msgStatus" :is-new="isNew"></CartsModal>
         <div class="product-content row mb-md-8 mb-5">
           <div class="col-md-5">
             <p class="card-text font-size-md-20">
@@ -59,17 +60,19 @@
           </div>
         </div>
         </div>
-        <h2 class="container mb-3 font-weight-bold">這裡<sub > 應該還有您喜歡的手作...</sub></h2>
+        <h2 class="container mb-3 font-weight-bold font-size-24 font-size-md-36">這裡<sub > 應該還有您喜歡的手作...</sub></h2>
         <Carousel ref="mySwiper"></Carousel>
     </div>
 </template>
 
 <script>
 import Carousel from '@/components/Frontend/Carousel'
+import CartsModal from '@/components/Frontend/CartsModal'
 export default {
   name: 'Product',
   components: {
-    Carousel
+    Carousel,
+    CartsModal
   },
   data () {
     return {
@@ -78,11 +81,15 @@ export default {
         imageUrl: [],
         options: {}
       },
-      cart: {}
+      msgStatus: {},
+      cart: {},
+      isNew: true,
+      tempQuantity: 1
     }
   },
   created () {
     this.getProduct()
+    this.getCart()
   },
   methods: {
     getProduct () {
@@ -93,7 +100,7 @@ export default {
       this.$http.get(api).then((response) => {
         this.tempProduct = response.data.data
         this.isLoading = false
-        console.log(this.product)
+        // console.log(this.product)
       })
     },
     getCart () {
@@ -101,7 +108,23 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
       this.$http.get(api).then((response) => {
         this.cart = response.data.data
+        // 取得該商品於購物車內數量
+        if (this.cart.length) {
+          this.cart.forEach((item) => {
+            if (item.product.id === this.tempProduct.id) {
+              this.tempQuantity = item.quantity
+              this.isNew = false
+            }
+          })
+        }
+        // console.log(this.cart)
       })
+    },
+    changeQuantity (num) {
+      this.tempQuantity = num
+    },
+    addToCart (item) {
+      window.$('#cartModalLong').modal('show')
     },
     quantityUpdate (id, num) {
       const cart = {

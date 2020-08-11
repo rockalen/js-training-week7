@@ -173,7 +173,7 @@ export default {
       const apiUrl = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}`
       let api = `${apiUrl}/admin/ec/product`
       this.statusMsg = '本筆資料已成功新增!'
-      // 注意httpMethod要小寫
+      // 注意httpMethod post要小寫
       let httpMethod = 'post'
       // 設定更新產品api路徑
       if (!this.isNew) {

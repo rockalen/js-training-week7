@@ -1,5 +1,6 @@
 <template>
 <div class="carousel">
+  <loading :active.sync="isLoading"></loading>
     <swiper :options="swiperOption" ref="mySwiper">
     <swiper-slide v-for="(item, index) in products" :key=index >
        <div class="card border-0">
@@ -33,7 +34,7 @@
 <script>
 // import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 // import '../../assets/style/swiper.min.css'
-import 'swiper/css/swiper.css'
+// import 'swiper/css/swiper.css'
 export default {
   name: 'Carousel',
   title: 'Centered slides',
@@ -43,6 +44,7 @@ export default {
   // },
   data () {
     return {
+      isLoading: false,
       products: [],
       swiperOption: {
         // slidesPerView: 4,
@@ -116,9 +118,11 @@ export default {
   },
   methods: {
     getProducts () {
+      this.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`
       this.$http.get(api).then((response) => {
         this.products = response.data.data
+        this.isLoading = false
         // console.log(this.products)
       })
     }
