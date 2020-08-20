@@ -15,18 +15,19 @@
 
 // index layout page scss
 .index-bg{
-    height: 640px;
-    position: relative;
+    height: 95vh;
+    // position: relative;
 }
 
-// .index-bg-cover{
-//     position: absolute;    
-//     background-size: cover;
-//     background-position: center center;
-//     top: 0;
-//     bottom: 0;
-//     background-image: url(./images/index-1.jpg);
-// }
+.index-bg-cover{
+    position: absolute;
+    z-index: -1;    
+    background-size: cover;
+    background-position: 40% center;
+    top: 0;
+    bottom: 0;
+    background-image: url(https://images.unsplash.com/photo-1583655827023-f9bce37f7e76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+}
 
 .footer-bg{
     height: 224px;
@@ -88,7 +89,7 @@
         padding-left: 15px !important;
     }
     .index-md-bg{
-        min-height: 800px;       
+        min-height: 100vh;       
     }
     .text-md-dark{
         color:#333 !important;

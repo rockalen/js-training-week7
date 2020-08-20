@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss">
 @import './assets/scss/all.scss';
-
+@import '~aos/dist/aos.css';
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;

@@ -112,8 +112,6 @@ export default {
     getProducts (page = 1, paged = 10) {
       this.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/products?page=${page}&paged=${paged}`
-      // const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`
-      // console.log(api)
       this.axios.get(api).then((response) => {
         this.products = response.data.data
         // 將遠端頁數回應資料存入產品頁數資料並給 pagination 元件做後續處理
@@ -130,18 +128,11 @@ export default {
             imageUrl: [],
             options: {} // 自行新增相關欄位亦一併清空
           }
-          // 202007改成模組內透過 isNew 來判斷 :class ，較為簡潔
-          // this.modalClass['bg-primary'] = true;
-          // this.modalClass['bg-success'] = false;
           this.isNew = true
           window.$('#productModal').modal('show')
           //   this.$refs['product-Model'].show()
           break
         case 'edit':
-          // 202007改成模組內透過 isNew 來判斷 :class ，較為簡潔
-          // this.modalClass['bg-primary'] = false;
-          // this.modalClass['bg-success'] = true;
-          // this.isLoading = true;
           this.loadingBtn = this.tempProduct.id
           this.isNew = false
           // this.tempProduct = Object.assign({}, item)

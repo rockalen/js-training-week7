@@ -2,11 +2,13 @@
 @import "./helpers/_variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap/scss/mixins";
-$font-sizes: (48, 36, 32, 24, 20, 16, 14, 12, 10);
+$font-sizes: (48, 40, 36, 32, 24, 20, 16, 14, 12, 10);
 @import "./helpers/font-sizes";
 @import "./helpers/materialIcon";
 @import "./layout/index";
 @import "./layout/products";
 @import "./helpers/logoFont";
 @import "./components/sidebar";
+@import "./components/progress";
+// @import "./components/Frontend/pagination";
 @import "./components/Frontend/Carousel";

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import AOS from 'aos'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import {
@@ -31,8 +32,14 @@ import jQuery from 'jquery'
 import FormatMoney from './filters/FormatMoney'
 window.$ = window.jQuery = jQuery
 // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-library.add(fas)
 
+// 插件
+// aos 動畫
+AOS.init()
+// 載入font-awesome
+// dom.watch();
+library.add(fas)
+// 載入font-awesome
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 // register VueAxios prototype

@@ -27,9 +27,14 @@ const routes = [
         component: () => import('../views/Product.vue')
       },
       {
-        path: '/carts',
+        path: '/orders',
         name: '購物車',
-        component: () => import('../views/Carts.vue')
+        component: () => import('../views/Orders.vue')
+      },
+      {
+        path: '/checkout',
+        name: '購物完成',
+        component: () => import('../views/Checkout.vue')
       },
       {
         path: '/about',

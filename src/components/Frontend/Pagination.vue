@@ -80,7 +80,7 @@ export default {
 <style lang="scss">
 .page-item.active .page-link {
     background-color: #fff;
-    color: #0E8A00;
+    color: #81572c;
 }
 .page-link:focus {
       box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.25);

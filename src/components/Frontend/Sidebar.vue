@@ -1,26 +1,24 @@
 <template>
   <div class="mainMenu">
-    <nav class="navbar navbar-expand-lg bg-transparent navbar-light px-15 w-100 mb-3 mb-md-0" >
+    <nav :class="{'navbar-dark':$route.name == '首頁', 'navbar-light':$route.name !== '首頁'}" class="navbar navbar-expand-lg bg-transparent  px-15 w-100 mb-3 mb-md-0" >
       <div class="container">
         <button @click="toggle" class="navbar-btn navbar-toggler p-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <!-- <span class="navbar-toggler-icon"></span> -->
-            <div class="toggle-menu">
-                <div class="line line1 bg-dark"></div>
-                <div class="line line2 bg-dark"></div>
-                <div class="line line3 bg-dark"></div>
+            <div class="toggle-menu" :class="{'line-index':$route.name == '首頁'}">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
             </div>
         </button>
         <router-link class="navbar-brand logo text-dark mr-0"
-         to="/">
-         <img src="@/assets/images/slowly4_logo.png" alt="logo" class="logo pr-md-2">
+         to="/" :class="{'logo-index':$route.name == '首頁'}">
+         <img src="@/assets/images/slowly4_logo.png" alt="logo" class="pr-md-2">
            DoSlowly
         </router-link>
-        <router-link class="navbar-cart nav-link text-dark px-0 order-md-3 material-icons"
-         to="/carts"
-         active-class="active"
-         >
-          shopping_cart
-        </router-link>
+        <a @click.prevent="openCarts" href="#" class="navbar-cart nav-link px-0 order-md-3"  :class="{'text-white':$route.name == '首頁', 'text-dark':$route.name !== '首頁'} " >
+          <i class="material-icons" >shopping_cart</i>
+          <span v-if="cart.length" class="carts-quantity badge badge-pill badge-main">{{cart.length}}</span>
+        </a>
         <div class="nav-bar collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav align-items-md-center flex-column flex-md-row font-size-24 font-size-md-16">
             <!-- <li class="nav-item active">
@@ -29,7 +27,7 @@
             <li class="nav-item mr-md-7 pb-3 py-md-0">
                 <!-- <div class="nav-product-item d-flex justify-content-between"> -->
                     <router-link class="nav-link p-0 d-none d-md-flex font-weight-bold"
-                      to="/products"
+                      :to="{ name: '產品列表', query:{ category: 'all' }}"
                       active-class="active"
                       >慢慢手做
                     </router-link>
@@ -40,20 +38,12 @@
                 <div class="sub-menu collapse bg-white mt-3" id="collapseSubMenu">
                     <ul class="list-unstyled sub-menu-item text-capitalize" id="sub-menu-item">
                         <li v-for="(item, index) in classMenu" :key="index" class="border-0 font-size-16 font-size-md-24 my-3">
-                            <a :href="item.link">{{item.name}}<sup>{{item.number}}</sup></a>
+                            <a :class="item.link == category ? 'text-main':''"
+                                data-toggle="list"
+                                href="#list-filter"
+                                @click="goProducts(item.link)"
+                              >{{item.name}}<sup>{{item.number}}</sup></a>
                         </li>
-                        <!-- <li class="border-0 font-size-16 font-size-md-24 my-3">
-                            <a href="#">bowl<sup>10</sup></a>
-                        </li>
-                        <li class="border-0 font-size-16 font-size-md-24 my-3">
-                            <a href="#">cup<sup>8</sup></a>
-                        </li>
-                        <li class="border-0 font-size-16 font-size-md-24 my-3">
-                            <a href="#">plate<sup>3</sup></a>
-                        </li>
-                        <li class="border-0 font-size-16 font-size-md-24 mt-3">
-                            <a href="#">vase<sup>3</sup></a>
-                        </li> -->
                     </ul>
                 </div>
             </li>
@@ -73,36 +63,6 @@
                   聯絡我們
                 </router-link>
             </li>
-             <!-- <li class="nav-item mr-7 py-3 py-md-0">
-                <router-link class="nav-link" to="/products"
-                  active-class="active">
-                  產品列表
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: '訂單列表' }"
-                  active-class="active">
-                  訂單列表
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: '優惠卷列表' }"
-                  active-class="active">
-                  優惠卷列表
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: '圖庫列表' }"
-                  active-class="active">
-                  圖庫列表
-                </router-link>
-            </li>
-              <li class="nav-item">
-              <router-link class="nav-link" to="/admin/customerOrders"
-                active-class="active">
-                模擬訂單
-              </router-link>
-            </li> -->
             </ul>
         </div>
       </div>
@@ -128,24 +88,55 @@
         </li> -->
       <!-- </ul> -->
     <!-- </div> -->
+    <CartsModalStd ref="CartsModalStd" :msgStatus="msgStatus" :is-new="isNew" ></CartsModalStd>
   </div>
 </template>
 <script>
+import CartsModalStd from '@/components/Frontend/CartsModalStd'
 export default {
   name: 'Sidebar',
+  components: {
+    CartsModalStd
+  },
   data () {
     return {
       activeClass: 0,
+      category: 'all',
+      products: [],
+      msgStatus: {},
+      cart: {},
+      isNew: false,
       classMenu: [
-        { name: '全部', number: 12, link: '#/products' },
-        { name: '手做陶器', number: 5, link: '#/products' },
-        { name: '木做小物', number: 2, link: '#/' },
-        { name: '多元素文創', number: 1, link: '#/' },
-        { name: '其他', number: 1, link: '#/' }
+        { name: '全部', number: 12, link: 'all' },
+        { name: '手做陶器', number: 5, link: '手做陶器' },
+        { name: '木作小物', number: 2, link: '木作小物' },
+        { name: '多元文創', number: 1, link: '多元文創' },
+        { name: '其他', number: 1, link: '其他' }
       ]
     }
   },
+  created () {
+    this.getCart()
+    this.getProducts()
+    this.$bus.$on('get-cart', () => {
+      this.getCart()
+    })
+  },
   methods: {
+    getProducts (page = 1, paged = 20) {
+      this.isLoading = true
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products?page=${page}&paged=${paged}`
+      // console.log(api)
+      this.axios.get(api).then((response) => {
+        this.products = response.data.data
+        // 將遠端頁數回應資料存入產品頁數資料並給 pagination 元件做後續處理
+        // this.pagination = response.data.meta.pagination
+        // 設定產品類別件數
+        this.filterClassNum()
+        this.isLoading = false
+        // console.log(this.products)
+      })
+    },
     toggle () {
       window.$('.navbar-btn').toggleClass('toggle')
       setTimeout(function () {
@@ -156,9 +147,93 @@ export default {
       window.$('.arrow-down').toggleClass('arrow-active')
     },
     getItem (index) {
-      this.activeClass = index // 把当前點擊元素的index，赋值给activeClass
+      this.activeClass = index // 把當前點擊元素的index，赋值给activeClass
       // console.log(this.activeClass)
+    },
+    openCarts () {
+      this.$refs.CartsModalStd.getCarts()
+      window.$('#cartModalLongStd').modal('show')
+      const vm = this
+      // 監聽 modal 關閉後重刷資料及畫面，為避免購物車內資訊不一致
+      window.$('#cartModalLongStd').on('hide.bs.modal',
+        function (e) {
+          // console.log(e)
+          // vm.$router.go(vm.$router.push({ path: '/products/' }))
+          // vm.$router.go()
+          vm.$bus.$emit('get-product-cart')
+        })
+    },
+    getCart () {
+      this.isLoading = true
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`
+      this.$http.get(api).then((response) => {
+        this.cart = response.data.data
+        this.isNew = true
+        // 取得該商品於購物車內數量
+        if (this.cart.length) {
+        //   this.cart.forEach((item) => {
+        //     if (item.product.id === this.tempProduct.id) {
+        //       this.tempQuantity = item.quantity
+        //       this.cartQuantity = item.quantity
+        //       console.log(this.tempQuantity)
+        //       console.log(this.cartQuantity)
+          this.isNew = false
+        //     }
+        //   })
+        }
+        this.isLoading = false
+        // console.log(this.cart)
+      })
+    },
+    filterClassNum () {
+      this.classMenu.forEach((item) => {
+        if (item.link === 'all') {
+          item.number = this.products.length
+        } else {
+          item.number = this.products.filter((product) => product.category === item.link).length
+        }
+        // console.log(item.number)
+      })
+    },
+    goProducts (category) {
+      this.toggle()
+      window.$('#navbarNav').toggleClass('show')
+      this.$router.push({ path: `/products?category=${category}` }) // -> /user/123
     }
   }
+  // computed: {
+  //   filterProducts () {
+  //     if (this.category === 'all') {
+  //       return this.products
+  //     }
+  //     return this.products.filter((item) => item.category === this.category)
+  //   }
+  // }
 }
 </script>
+
+<style lang="scss" scoped>
+.logo-index {
+  color: #fff !important;
+  img {
+    content:url("../../assets/images/slowly_logo2_white.png")
+  }
+}
+.carts-quantity {
+  transform: translateX(-9px) translateY(4px);
+}
+.line-index {
+  div {
+    background-color:#fff;
+  }
+}
+
+@media (min-width: 576px) {
+  .logo-index{
+    color: #000 !important;
+    img {
+    content:url("../../assets/images/slowly4_logo.png")
+  }
+  }
+}
+</style>

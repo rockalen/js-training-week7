@@ -48,7 +48,7 @@ export default {
         const { expired } = res.data
         // 參考第4周作業寫入本地cookie，包括設置有效時間expires
         document.cookie = `token=${token};expires=${new Date(expired * 1000)};path=/`
-        console.log(document.cookie)
+        // console.log(document.cookie)
         this.$router.push('/admin/products')
       }).catch((err) => {
         console.log(err)

@@ -3,7 +3,7 @@
   <loading :active.sync="isLoading"></loading>
     <swiper :options="swiperOption" ref="mySwiper">
     <swiper-slide v-for="(item, index) in products" :key=index >
-       <div class="card border-0">
+       <div @click="getProduct(item.id)" class="card border-0">
           <img :src="item.imageUrl[0]" class="card-img-top slide-img-top" alt="...">
           <div class="card-img-overlay p-3">
             <p v-if="item.price < item.origin_price" class="card-text text-right text-white font-size-14 text-capitalize">on sale</p>
@@ -18,13 +18,6 @@
         </div>
     </swiper-slide>
     <!-- <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    <swiper-slide>Slide 4</swiper-slide>
-    <swiper-slide>Slide 5</swiper-slide>
-    <swiper-slide>Slide 6</swiper-slide>
-    <swiper-slide>Slide 7</swiper-slide>
-    <swiper-slide>Slide 8</swiper-slide>
-    <swiper-slide>Slide 9</swiper-slide>
     <swiper-slide>Slide 10</swiper-slide> -->
     <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
@@ -114,7 +107,7 @@ export default {
   // },
   created () {
     this.getProducts()
-    console.log(this.swiperOption.breakpoints)
+    // console.log(this.swiperOption.breakpoints)
   },
   methods: {
     getProducts () {
@@ -125,6 +118,19 @@ export default {
         this.isLoading = false
         // console.log(this.products)
       })
+    },
+    getProduct (id) {
+      // const r = this.$router.resolve({
+      // name: this.$route.name, // put your route information in
+      // path: `/product/${id}`
+      // params: this.$route.params, // put your route information in
+      // query: id // put your route information in
+      // })
+      // console.log(r.href)
+      // window.location.assign(r.href)
+      // this.$router.push({ path: `/product/${id}` })
+      this.$router.go(this.$router.push({ path: `/product/${id}` }))
+      // this.getProducts()
     }
   }
 }
@@ -148,7 +154,9 @@ export default {
   .swiper-slide:nth-child(3n) {
       width: 20%;
   }
-
+  .card {
+    cursor: pointer;
+  }
   @media (min-width: 576px){
     .swiper-container {
       padding-bottom: 52px;

@@ -18,7 +18,7 @@
                   <a class="nav-link p-0 text-white-50" href="#">隱私政策</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link p-0 text-white-50" href="#">圖片、介紹皆取自網路，僅供練習之用</a>
+                  <a class="nav-link p-0 text-white-50" href="#">僅供學習使用，無商業用途</a>
               </li>
               <!-- <li class="nav-item">
                   <a class="nav-link p-0" href="#">
