@@ -8,7 +8,7 @@
       <div class="index-banner container d-flex flex-column justify-content-between justify-content-md-center px-0 px-md-gutter">
         <div class="row d-block d-md-none">
         </div>
-        <div class="row flex-column justify-content-center text-white text-md-dark">
+        <div class="row flex-column justify-content-center text-white banner-H">
           <div class="col-md-6 text-center text-md-left">
               <h1 class="mb-4 display-5">
                 手作療癒魔力<br>打造生活幸福感.
@@ -19,7 +19,7 @@
         </div>
         <div class="row mb-4">
           <div class="col-12 col-md-3 col-lg-2">
-            <router-link class="btn btn-main btn-lg w-100" to="/products?category=all" role="button">開始擁抱</router-link>
+            <router-link class="btn btn-main btn-lg w-100" to="/products?category=all" role="button">開始擁有</router-link>
           </div>
         </div>
       </div>
@@ -102,8 +102,19 @@ export default {
   height: 220px;
   object-fit: cover;
 }
-
 @media (min-width: 576px) {
+ .banner-text {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  .card-img, .card-img-top {
+    height: 370px;
+    object-fit: cover;
+  }
+}
+@media (min-width: 768px) {
+  .banner-H {
+    color: #333 !important;
+  }
  .banner-text {
     color:  #6c757d !important;
   }

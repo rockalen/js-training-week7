@@ -12,7 +12,7 @@
         </button>
         <router-link class="navbar-brand logo text-dark mr-0"
          to="/" :class="{'logo-index':$route.name == '首頁'}">
-         <img src="@/assets/images/slowly4_logo.png" alt="logo" class="pr-md-2">
+          <img src="@/assets/images/slowly4_logo.png" alt="logo" class="pr-md-2">
            DoSlowly
         </router-link>
         <a @click.prevent="openCarts" href="#" class="navbar-cart nav-link px-0 order-md-3"  :class="{'text-white':$route.name == '首頁', 'text-dark':$route.name !== '首頁'} " >
@@ -26,7 +26,7 @@
             </li> -->
             <li class="nav-item mr-md-7 pb-3 py-md-0">
                 <!-- <div class="nav-product-item d-flex justify-content-between"> -->
-                    <router-link class="nav-link p-0 d-none d-md-flex font-weight-bold"
+                    <router-link :class="{'active':$route.name == '產品列表'}" class="nav-link p-0 d-none d-md-flex font-weight-bold"
                       :to="{ name: '產品列表', query:{ category: 'all' }}"
                       active-class="active"
                       >慢慢手做
@@ -230,10 +230,19 @@ export default {
 
 @media (min-width: 576px) {
   .logo-index{
+    color: #fff !important;
+    img {
+      content:url("../../assets/images/slowly_logo2_white.png")
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-index{
     color: #000 !important;
     img {
-    content:url("../../assets/images/slowly4_logo.png")
-  }
+      content:url("../../assets/images/slowly4_logo.png")
+    }
   }
 }
 </style>
