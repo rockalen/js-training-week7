@@ -274,6 +274,20 @@
           <!-- </div> -->
           <!-- pay list -->
           <div class="col-12 col-md-4 order-2 order-md-3">
+            <div class="form-group d-flex coupon-box mb-0 p-3 p-md-4">
+                    <label for="couponCode" class="sr-only">couponCode</label>
+                    <input
+                      type="text"
+                      class="form-control w-75 mr-2"
+                      id="couponCode"
+                      placeholder="請輸入優惠碼"
+                      v-model="couponCode"
+                      @keyup.enter="addCoupon"
+                    />
+                    <button type="button" class="btn btn-outline-main w-25" @click="addCoupon">
+                      套用
+                    </button>
+              </div>
               <ul class="list-unstyled pay-list p-3 p-md-4 collapse d-md-block" id="collapse-pay-list">
                   <li v-for="(item, index) in carts" :key="index" class="mb-3">
                       <img :src="item.product.imageUrl[0]" alt="">
@@ -291,10 +305,24 @@
                           <p>NT$3,600</p>
                       </div>
                   </li> -->
-                  <li class="border-top pt-3 mb-3">
+                  <li
+                    class="d-flex
+                justify-content-between align-items-center pt-3 mb-3 border-top "
+                    v-if="coupon.enabled"
+                  >
+                    <h5 class="mb-0">優惠碼</h5>
+                    <p class="mb-0 h5">
+                      -
+                      {{
+                        Math.round(totalMoney * (coupon.percent / 100)) | money
+                      }}
+                    </p>
+                  </li>
+                  <li class="mb-3" :class="{'pt-3':!coupon.enabled}">
                       <div>
                           <p>小計</p>
-                          <p>{{totalMoney | money}}</p>
+                          <p v-if="coupon.enabled">{{totalMoney - Math.round((totalMoney * (coupon.percent / 100))) | money}}</p>
+                          <p v-else>{{totalMoney | money}}</p>
                       </div>
                   </li>
                   <li class="mb-3">
@@ -306,7 +334,12 @@
                   <li class="mb-3 pt-3 border-top">
                       <div class="font-size-24 font-weight-bold">
                           <p>總計</p>
-                          <p>{{totalMoney + shipping | money}}</p>
+                          <p v-if="coupon.enabled">
+                            {{totalMoney - Math.round((totalMoney * (coupon.percent / 100))) + shipping | money}}
+                          </p>
+                          <p v-else>
+                            {{totalMoney + shipping | money}}
+                          </p>
                       </div>
                   </li>
               </ul>
@@ -334,6 +367,8 @@ export default {
         message: ''
       },
       carts: {},
+      coupon: {},
+      couponCode: '',
       // subTotal: 0,
       shipping: 80
     }
@@ -365,9 +400,9 @@ export default {
       this.form.address = this.country + this.city + this.form.address
       console.log(this.form.address)
       const order = { ...this.form }
-      // if (this.coupon.enabled) {
-      //   order.coupon = this.coupon.code
-      // }
+      if (this.coupon.enabled) {
+        order.coupon = this.coupon.code
+      }
       this.$http.post(api, order)
         .then((response) => {
           document.cookie = `orderId=${response.data.data.id}; expires=/; path=/`
@@ -376,19 +411,31 @@ export default {
           this.isLoading = false
           // console.log(order)
         })
-        .catch(() => {
+        .catch((error) => {
           this.isLoading = false
-          // swal({
-          //   title: '訂單失敗',
-          //   text: '系統忙碌中，請稍後再嘗試',
-          //   icon: 'error',
-          //   buttons: false,
-          //   timer: 1000,
-          // });
+          this.$bus.$emit('message:push', `喔歐~訂單失敗，請稍後再嘗試!
+          ${error.response.data.message}(${error.response.status})`,
+          'danger')
         })
     },
     goBack () {
       this.$router.go(-1)
+    },
+    addCoupon () {
+      this.isLoading = true
+      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/coupon/search`
+      this.$http.post(api, { code: this.couponCode })
+        .then((res) => {
+          this.coupon = res.data.data
+          this.$emit('addCoupon', this.coupon)
+          this.isLoading = false
+        })
+        .catch((error) => {
+          this.$bus.$emit('message:push', `喔歐~優惠碼失敗，請確認優惠碼後再重新嘗試!
+          ${error.response.data.message}(${error.response.status})`,
+          'danger')
+          this.isLoading = false
+        })
     }
   },
   computed: {
@@ -404,6 +451,9 @@ export default {
 
 <style lang="scss" scoped>
 $pay-list-bg:#F2F2F2;
+.coupon-box {
+  background-color: $pay-list-bg;
+}
 .pay-list{
     background-color: $pay-list-bg;
     p{
