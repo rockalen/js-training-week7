@@ -1,7 +1,7 @@
 <template>
-    <div class="products">
+    <div class="products mt-8">
       <!-- <ClassMenu/> -->
-      <div class="static-sub-menu container-fluid mb-4 mb-md-7 d-none d-md-block" id="staticSubMenu">
+      <div class="static-sub-menu  container-fluid mb-4 mb-md-7 d-none d-md-block" id="staticSubMenu">
       <ul class="nav sub-menu-item text-capitalize container" id="sub-menu-item">
         <li v-for="(item, index) in classMenu" :key="index"
          class="nav-item border-0 font-size-16 font-size-md-24 my-3">

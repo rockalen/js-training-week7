@@ -109,7 +109,7 @@
                   <p style="color: green">已完成付款</p>
                 </li> -->
             </ul>
-            <router-link class="btn btn-main btn-lg w-50" to="/products" role="button">
+            <router-link class="btn btn-main btn-lg w-50" :to="{ name: '產品列表', query:{ category: 'all' }}" role="button">
               繼續選購
             </router-link>
             </div>

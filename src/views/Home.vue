@@ -43,6 +43,39 @@ export default {
       this.layer = layer
       // console.log(this.layer)
     }
+  },
+  mounted () {
+    // 視窗滑動時執行的事件
+    window.$(window).scroll(() => {
+      if (window.$(window).scrollTop() > 0) {
+        // window.$('.navbar').removeClass('navbar-top')
+        if (this.$route.name === '首頁') {
+          window.$('.navbar').removeClass('navbar-dark')
+          window.$('.navbar-cart').removeClass('text-white')
+          window.$('.toggle-menu').removeClass('line-index')
+          window.$('.logo').removeClass('logo-index')
+          window.$('.navbar').addClass('navbar-light')
+        }
+        // else {
+        //   window.$('.navbar').removeClass('navbar-light')
+        //   window.$('.navbar').addClass('navbar-dark')
+        // }
+        window.$('.navbar').addClass('bg-white')
+      } else {
+        // window.$('.navbar').addClass('navbar-top')
+        if (this.$route.name === '首頁') {
+          window.$('.navbar').addClass('navbar-dark')
+          window.$('.navbar').removeClass('navbar-light')
+          window.$('.navbar-cart').addClass('text-white')
+          window.$('.logo').addClass('logo-index')
+          window.$('.toggle-menu').addClass('line-index')
+        } else {
+          window.$('.navbar').addClass('navbar-light')
+          window.$('.navbar').removeClass('navbar-dark')
+        }
+        window.$('.navbar').removeClass('bg-white')
+      }
+    })
   }
   // props: ['isDisplay'] // 使用`props`聲明它所獲得的資料
 }

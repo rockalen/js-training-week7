@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <section class="container-fluid index-bg index-md-bg" >
+    <section class="container-fluid index-bg index-md-bg mb-7 mb-md-8" >
       <div class="row justify-content-end">
         <div class="col-md-6 index-bg-cover">
         </div>
@@ -93,7 +93,7 @@ export default {
   color: #fff !important;
 }
 .index-banner {
-  height: 90%;
+  height: 100%;
 }
 .banner-text {
   color: rgba(255, 255, 255, 0.7) !important;

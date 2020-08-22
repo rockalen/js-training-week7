@@ -1,6 +1,7 @@
 <template>
   <div class="mainMenu">
-    <nav :class="{'navbar-dark':$route.name == '首頁', 'navbar-light':$route.name !== '首頁'}" class="navbar navbar-expand-lg bg-transparent  px-15 w-100 mb-3 mb-md-0" >
+    <!-- :class="{'navbar-dark':$route.name == '首頁', 'navbar-light':$route.name !== '首頁'}" -->
+    <nav :class="{'navbar-dark':$route.name == '首頁', 'navbar-light':$route.name !== '首頁'}" class="navbar fixed-top navbar-top navbar-expand-lg px-15 w-100 mb-3 mb-md-0" >
       <div class="container">
         <button @click="toggle" class="navbar-btn navbar-toggler p-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <!-- <span class="navbar-toggler-icon"></span> -->
@@ -213,6 +214,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+nav.bar {
+  transition: 0.5s;
+}
+.navbar-top {
+  background-color: transparent;
+}
+.navbar-top a {
+  // color: white;
+  transition: 0.5s;
+}
+.navbar-top a:hover {
+  color: #69403e !important;
+}
+
 .logo-index {
   color: #fff !important;
   img {
