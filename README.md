@@ -2,20 +2,20 @@
 tags: JavaScript 實戰班
 ---
 
-# 第七週 Vue Router
+# 第七週 Vue Router、第八週 最終挑戰
 
 - 後台DEMO :[https://rockalen.github.io/js-training-week7/dist/#/login](https://rockalen.github.io/js-training-week7/dist/#/login)
-- 前台DEMO :[https://rockalen.github.io/js-training-week7/dist/#/products](https://rockalen.github.io/js-training-week7/dist/#/products)
+- 前台DEMO :[https://rockalen.github.io/js-training-week7/dist/#/](https://rockalen.github.io/js-training-week7/dist/#/)
 
 ### Router 運用方法
 
 #### 前台頁面
-- 首頁 / (尚未完成)
+- 首頁 /index
 - 手做理念 /about
 - 慢慢手做 /products
-    - 單一產品頁面 /product (尚未完成)
-- 購物車 /carts (尚未完成)
-- 購物成功 (尚未施作)
+    - 單一產品頁面 /product
+- 購物車 /carts
+- 購物成功 /orders
 
 #### 後台管理頁面
 - 登入頁面 /login
