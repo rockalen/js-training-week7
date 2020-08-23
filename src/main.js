@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import AOS from 'aos'
+import Vue2Editor from 'vue2-editor'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import {
@@ -19,7 +20,6 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import 'bootstrap'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-
 // import style
 import 'swiper/css/swiper.css'
 // If you use Swiper 6.0.0 or higher
@@ -36,6 +36,8 @@ window.$ = window.jQuery = jQuery
 // 插件
 // aos 動畫
 AOS.init()
+// 文字編輯器
+Vue.use(Vue2Editor)
 // 載入font-awesome
 // dom.watch();
 library.add(fas)

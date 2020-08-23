@@ -68,12 +68,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="description" class="col-form-label">產品介紹</label>
-                                    <textarea v-model="tempProduct.content" class="form-control" id="description" placeholder="請輸入產品描述"></textarea>
+                                    <label for="content" class="col-form-label">產品介紹</label>
+                                    <textarea v-model="tempProduct.content" class="form-control" id="content" placeholder="請輸入產品描述"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="content" class="col-form-label">產品描述</label>
-                                    <textarea v-model="tempProduct.description" class="form-control" id="content" placeholder="請輸入產品內容介紹"></textarea>
+                                    <label for="description" class="col-form-label">產品描述</label>
+                                    <vue-editor id="description" v-model="tempProduct.description"></vue-editor>
+                                    <!-- <textarea v-model="tempProduct.description" class="form-control" id="description" placeholder="請輸入產品內容介紹"></textarea> -->
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">

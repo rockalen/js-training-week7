@@ -128,8 +128,8 @@ export default {
       // })
       // console.log(r.href)
       // window.location.assign(r.href)
-      // this.$router.push({ path: `/product/${id}` })
-      this.$router.go(this.$router.push({ path: `/product/${id}` }))
+      this.$router.push({ path: `/product/${id}` })
+      // this.$router.go(this.$router.push({ path: `/product/${id}` }))
       // this.getProducts()
     }
   }
