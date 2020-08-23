@@ -189,7 +189,6 @@ export default {
         user: {}
       },
       carts: {},
-      // subTotal: 0,
       shipping: 80
     }
   },
@@ -206,44 +205,13 @@ export default {
 
       this.$http.get(api).then((response) => {
         this.order = response.data.data
-        console.log(this.order)
+        // console.log(this.order)
         // this.isNew = true
         this.isLoading = false
-        // this.carts.forEach((item) => {
-        //   this.subTotal += (item.product.price * item.quantity)
-        // })
-        // console.log(this.cart)
       })
     },
     subMenuToogle () {
       window.$('.pay-list-arrow_down').toggleClass('arrow-active')
-    },
-    successOrder () {
-      this.isLoading = true
-      const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders`
-      this.form.address = this.country + this.city + this.form.address
-      console.log(this.form.address)
-      const order = { ...this.form }
-      // if (this.coupon.enabled) {
-      //   order.coupon = this.coupon.code
-      // }
-      this.$http.post(api, order)
-        .then((response) => {
-          this.$bus.$emit('get-cart')
-          // this.$router.push('/checkout')
-          this.isLoading = false
-          console.log(order)
-        })
-        .catch(() => {
-          this.isLoading = false
-          // swal({
-          //   title: '訂單失敗',
-          //   text: '系統忙碌中，請稍後再嘗試',
-          //   icon: 'error',
-          //   buttons: false,
-          //   timer: 1000,
-          // });
-        })
     },
     goBack () {
       this.$router.go(-1)
