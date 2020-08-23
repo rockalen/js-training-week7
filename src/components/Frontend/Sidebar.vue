@@ -17,7 +17,13 @@
            DoSlowly
         </router-link>
         <a @click.prevent="openCarts" href="#" class="navbar-cart nav-link px-0 order-md-3"  :class="{'text-white':$route.name == '首頁', 'text-dark':$route.name !== '首頁'} " >
-          <i class="material-icons" >shopping_cart</i>
+          <!-- <i class="material-icons" >shopping_cart</i> -->
+          <span class="d-none">Cart</span>
+          <svg class="navbar-cart-icon"
+          :class="{'cart-icon-white':$route.name == '首頁', 'cart-icon-dark':$route.name !== '首頁'} "
+          id="cart-bold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+            <path d="M72.848 70.25c6.075 0 11 4.925 11 11s-4.925 11-11 11-11-4.925-11-11 4.925-11 11-11zm-35 0c6.075 0 11 4.925 11 11s-4.925 11-11 11-11-4.925-11-11c0-6.074 4.926-11 11-11zm35 7a4 4 0 10.002 8.001 4 4 0 00-.002-8.001zm-35 0a4 4 0 100 8 4 4 0 000-8zM13.892 3.75c2.287 0 4.376 1.55 5.058 3.72l.064.22 2.97 11.187h68.128a4.727 4.727 0 014.661 5.786l-.048.2-9.559 36.291c-.583 2.216-2.618 3.842-4.894 3.944l-.228.005H30.06c-2.287 0-4.377-1.55-5.06-3.72l-.063-.219-13.124-49.413-10.7.006-.004-8 12.782-.007zm72.03 23.127H24.108l8.027 30.226H77.96l7.962-30.226z"></path>
+          </svg>
           <span v-if="cart.length" class="carts-quantity badge badge-pill badge-main">{{cart.length}}</span>
         </a>
         <div class="nav-bar collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -214,6 +220,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar-cart-icon {
+    // position: absolute;
+    // left: 8px;
+    // top: 8px;
+    width: 24px;
+    height: 24px;
+    transition: 0.5s;
+    &:hover {
+      fill:#69403e;
+    }
+}
+.cart-icon-white {
+  fill: #fff;
+}
+.cart-icon-dark {
+  fill: #000;
+}
+
 nav.bar {
   transition: 0.5s;
 }
@@ -235,7 +259,8 @@ nav.bar {
   }
 }
 .carts-quantity {
-  transform: translateX(-9px) translateY(4px);
+  // transform: translateX(-9px) translateY(4px);
+  transform: translateX(-8px) translateY(-8px);
 }
 .line-index {
   div {

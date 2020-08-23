@@ -51,7 +51,8 @@ export default {
         // window.$('.navbar').removeClass('navbar-top')
         if (this.$route.name === '首頁') {
           window.$('.navbar').removeClass('navbar-dark')
-          window.$('.navbar-cart').removeClass('text-white')
+          // window.$('.navbar-cart').removeClass('text-white')
+          window.$('.navbar-cart-icon').removeClass('cart-icon-white')
           window.$('.toggle-menu').removeClass('line-index')
           window.$('.logo').removeClass('logo-index')
           window.$('.navbar').addClass('navbar-light')
@@ -66,7 +67,8 @@ export default {
         if (this.$route.name === '首頁') {
           window.$('.navbar').addClass('navbar-dark')
           window.$('.navbar').removeClass('navbar-light')
-          window.$('.navbar-cart').addClass('text-white')
+          // window.$('.navbar-cart').addClass('text-white')
+          window.$('.navbar-cart-icon').addClass('cart-icon-white')
           window.$('.logo').addClass('logo-index')
           window.$('.toggle-menu').addClass('line-index')
         } else {
