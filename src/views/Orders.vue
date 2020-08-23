@@ -398,10 +398,10 @@ export default {
       this.isLoading = true
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders`
       this.form.address = this.country + this.city + this.form.address
-      console.log(this.form.address)
       const order = { ...this.form }
       if (this.coupon.enabled) {
         order.coupon = this.coupon.code
+        // console.log(order.coupon)
       }
       this.$http.post(api, order)
         .then((response) => {

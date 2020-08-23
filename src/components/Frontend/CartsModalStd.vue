@@ -167,7 +167,9 @@ export default {
         httpMethod = 'patch'
         this.statusMsg = '購物車本筆資料已完成更新!'
       }
-
+      if (quantity < 1) {
+        quantity = 1
+      }
       const data = {
         product: id,
         quantity: quantity

@@ -134,10 +134,24 @@
                           <p>NT$3,600</p>
                       </div>
                   </li> -->
+                  <li
+                    class="d-flex
+                justify-content-between align-items-center pt-3 mb-3 border-top "
+                    v-if="order.coupon.enabled"
+                  >
+                    <h5 class="mb-0">優惠碼</h5>
+                    <p class="mb-0 h5">
+                      -
+                      {{
+                        Math.round(totalMoney * (order.coupon.percent / 100)) | money
+                      }}
+                    </p>
+                  </li>
                   <li class="border-top pt-3 mb-3">
                       <div>
                           <p>小計</p>
-                          <p>{{totalMoney | money}}</p>
+                          <p v-if="order.coupon.enabled">{{totalMoney - Math.round((totalMoney * (order.coupon.percent / 100))) | money}}</p>
+                          <p v-else>{{totalMoney | money}}</p>
                       </div>
                   </li>
                   <li class="mb-3">
@@ -149,7 +163,10 @@
                   <li class="mb-3 pt-3 border-top">
                       <div class="font-size-24 font-weight-bold">
                           <p>總計</p>
-                          <p>{{totalMoney + shipping | money}}</p>
+                          <p v-if="order.coupon.enabled">
+                            {{totalMoney - Math.round((totalMoney * (order.coupon.percent / 100))) + shipping | money}}
+                          </p>
+                          <p v-else>{{totalMoney + shipping | money}}</p>
                       </div>
                   </li>
               </ul>
@@ -168,6 +185,7 @@ export default {
       isLoading: false,
       order: {
         products: [],
+        coupon: {},
         user: {}
       },
       carts: {},
