@@ -61,7 +61,7 @@
         </div>
         </div>
         <h2 class="container mb-3 font-weight-bold font-size-24 font-size-md-36">這裡<sub > 應該還有您喜歡的手作...</sub></h2>
-        <Carousel ref="mySwiper"></Carousel>
+        <Carousel ref="mySwiper" @emit-product="getProduct"></Carousel>
     </div>
 </template>
 
@@ -90,17 +90,20 @@ export default {
     }
   },
   created () {
-    this.getProduct()
+    // 取回產品ID
+    const { id } = this.$route.params
+    this.getProduct(id)
     this.getCart()
     this.$bus.$on('get-product-cart', () => {
       this.getCart()
     })
   },
   methods: {
-    getProduct () {
+    getProduct (id) {
       this.isLoading = true
       // 取回產品ID
-      const { id } = this.$route.params
+      // const { id } = this.$route.params
+      // console.log(id)
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/product/${id}`
       this.$http.get(api).then((response) => {
         this.tempProduct = response.data.data

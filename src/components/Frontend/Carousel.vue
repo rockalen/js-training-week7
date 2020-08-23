@@ -3,7 +3,7 @@
   <loading :active.sync="isLoading"></loading>
     <swiper :options="swiperOption" ref="mySwiper">
     <swiper-slide v-for="(item, index) in products" :key=index >
-       <div @click="getProduct(item.id)" class="card border-0">
+       <div @click="emitProduct(item.id)" class="card border-0">
           <img :src="item.imageUrl[0]" class="card-img-top slide-img-top" alt="...">
           <div class="card-img-overlay p-3">
             <p v-if="item.price < item.origin_price" class="card-text text-right text-white font-size-14 text-capitalize">on sale</p>
@@ -55,6 +55,7 @@ export default {
         slidesPerView: 4.2,
         spaceBetween: 30,
         slidesOffsetBefore: 186,
+        // 設定RWD顯示參數
         breakpoints: {
           320: {
             slidesOffsetBefore: 15,
@@ -119,18 +120,12 @@ export default {
         // console.log(this.products)
       })
     },
-    getProduct (id) {
-      // const r = this.$router.resolve({
-      // name: this.$route.name, // put your route information in
-      // path: `/product/${id}`
-      // params: this.$route.params, // put your route information in
-      // query: id // put your route information in
-      // })
-      // console.log(r.href)
-      // window.location.assign(r.href)
-      this.$router.push({ path: `/product/${id}` })
-      // this.$router.go(this.$router.push({ path: `/product/${id}` }))
-      // this.getProducts()
+    emitProduct (item) {
+      if (this.$route.name !== '產品詳細頁') {
+        this.$router.push({ path: `/product/${item}` })
+      }
+      this.$emit('emit-product', item)
+      // console.log(item)
     }
   }
 }
